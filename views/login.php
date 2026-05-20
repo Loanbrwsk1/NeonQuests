@@ -1,15 +1,3 @@
-<?php
-$_SESSION['pseudo'] = "Invité";
-$_SESSION['progress'] = 0;
-for($i = 1 ; $i <= 9 ; $i++){
-    $theme = "T" . $i;
-    for($j = 1 ; $j <= 5 ; $j++){
-        $question = "Q" . $j;
-        $_SESSION[$theme . $question . "D"] = "";
-        $_SESSION[$theme . $question . "V"] = "";
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
