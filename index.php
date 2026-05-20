@@ -60,6 +60,7 @@ if ($page == "login") {
 } else if ($page == "home") {
     DisplayHome();
 } else if ($page == "create") {
+    $_SESSION['pseudo'] = "Invite";
     DisplayCreate();
 } else if ($page == "account") {
     DisplayAccount();

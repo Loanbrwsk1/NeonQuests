@@ -1,6 +1,3 @@
-<?php
-$_SESSION['pseudo'] = "Invite";
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
