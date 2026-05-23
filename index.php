@@ -7,15 +7,13 @@ if (!isset($_SESSION["pseudo"]) && empty($_SESSION["pseudo"]) && isset($_COOKIE[
     AutoLogin();
 }
 
-if (!isset($_GET["page"]) && !empty($_GET["page"]) && isset($_SESSION["pseudo"]) && !empty($_SESSION["pseudo"]) && !isset($_GET["action"]) && empty($_GET["action"])) {
+if (!isset($_GET["page"]) && empty($_GET["page"]) && isset($_SESSION["pseudo"]) && !empty($_SESSION["pseudo"]) && !isset($_GET["action"]) && empty($_GET["action"]) && !isset($_POST["action"]) && empty($_POST["action"])) {
     RedirectHome();
 }
 
 if (isset($_GET["page"]) && !empty($_GET["page"]) && isset($_SESSION["pseudo"]) && !empty($_SESSION["pseudo"])) {
     $page = htmlspecialchars($_GET["page"]);
-    if (($page == "login" || $page == "create") && isset($_SESSION["pseudo"])) {
-        RedirectHome();
-    } else if ($page == "question" && (isset($_GET["theme"]) && !empty($_GET["theme"]) && isset($_GET["question"]) && !empty($_GET["question"]))) {
+    if ($page == "question" && (isset($_GET["theme"]) && !empty($_GET["theme"]) && isset($_GET["question"]) && !empty($_GET["question"]))) {
         $theme = htmlspecialchars($_GET["theme"]);
         $question = htmlspecialchars($_GET["question"]);
     } else if ($page == "intro" && (isset($_GET["theme"]) && !empty($_GET["theme"]))) {
@@ -25,19 +23,23 @@ if (isset($_GET["page"]) && !empty($_GET["page"]) && isset($_SESSION["pseudo"]) 
     $page = "login";
 }
 
-if (isset($_GET["action"]) && !empty($_GET["action"])) {
-    $action = htmlspecialchars($_GET["action"]);
+if(isset($_POST["action"]) && !empty($_POST["action"])){
+    $action = htmlspecialchars($_POST["action"]);
     if ($action == "check-connect") {
         CheckConnect();
-    }
-    if ($action == "check-create") {
+    } else if ($action == "check-create") {
         CheckCreate();
-    } else if ($action == "logout") {
-        LogOut();
-    } else if ($action == "delete") {
+    } else if($action == "delete"){
         CheckDelete();
-    } else if ($action == "change-pwd") {
+    } else if($action == "change-pwd"){
         CheckChangePwd();
+    }
+}
+
+if (isset($_GET["action"]) && !empty($_GET["action"])) {
+    $action = htmlspecialchars($_GET["action"]);
+    if ($action == "logout") {
+        LogOut();
     } else if ($action == "check-answer") {
         if (isset($_GET["theme"]) && !empty($_GET["theme"]) && isset($_GET["question"]) && !empty($_GET["question"])) {
             CheckAnswer(htmlspecialchars($_GET["theme"]), htmlspecialchars($_GET["question"]));

@@ -27,15 +27,15 @@
             <br>
             <div class="wrapper-button-delete">
                 <button onclick="displayConfirm()" class="non-button button-delete">Non</button>
-                <a href="/index.php?action=delete">
-                    <button class="oui-button button-delete">Oui</button>
-                </a>
+                    <form action="/index.php" method="post">
+                        <button class="oui-button button-delete" type="submit" name="action" value="delete">Oui</button>
+                    </form>
             </div>
         </div>
     </div>
 
     <!-- From Uiverse.io by InfinityLoopGames -->
-    <form class="container" action="/index.php?action=change-pwd" method="post">
+    <form class="container" action="/index.php" method="post">
         <div class="input-container">
             <div class="input-content">
                 <div class="input-dist">
@@ -58,7 +58,7 @@
                                 <i class="fa-solid fa-eye" id="icon-confirm"></i>
                             </button>
                         </div>
-                        <button class="submit">Changer le mot de passe</button>
+                        <button class="submit" type="submit" name="action" value="change-pwd">Changer le mot de passe</button>
                     </div>
                 </div>
             </div>
