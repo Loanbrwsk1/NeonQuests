@@ -13,6 +13,9 @@ if (!isset($_GET["page"]) && empty($_GET["page"]) && isset($_SESSION["pseudo"]) 
 
 if (isset($_GET["page"]) && !empty($_GET["page"]) && isset($_SESSION["pseudo"]) && !empty($_SESSION["pseudo"])) {
     $page = htmlspecialchars($_GET["page"]);
+    if(($page == "login" || $page == "create") && $_SESSION["pseudo"] != "Invité"){
+        RedirectHome();
+    }
     if ($page == "question" && (isset($_GET["theme"]) && !empty($_GET["theme"]) && isset($_GET["question"]) && !empty($_GET["question"]))) {
         $theme = htmlspecialchars($_GET["theme"]);
         $question = htmlspecialchars($_GET["question"]);
@@ -62,7 +65,7 @@ if ($page == "login") {
 } else if ($page == "home") {
     DisplayHome();
 } else if ($page == "create") {
-    $_SESSION['pseudo'] = "Invite";
+    $_SESSION['pseudo'] = "Invité";
     DisplayCreate();
 } else if ($page == "account") {
     DisplayAccount();
