@@ -224,13 +224,13 @@ function CheckAnswerDB(string $theme, string $question)
 {
     global $DB;
     $answer = htmlspecialchars($_POST['answer']);
-    $is_multiple_answers = 0;
+    $is_multiple_answers = false;
     if(isset($_POST["answer2"]) && !empty($_POST["answer2"]) && isset($_POST["answer3"]) && !empty($_POST["answer3"])){
         $answer2 = htmlspecialchars($_POST["answer2"]);
         $answer3 = htmlspecialchars($_POST["answer3"]);
         $answer = $answer . "@" . $answer2 . "@" . $answer3;
         $answer_split = explode("@", $answer);
-        $is_multiple_answers = 1;
+        $is_multiple_answers = true;
     }
 
     $SQL = 'SELECT answer, gain FROM answers WHERE theme = ? AND question = ?';
