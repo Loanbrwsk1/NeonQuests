@@ -126,7 +126,7 @@ function CheckDelete()
     require_once "models/model.php";
     if($_SESSION["pseudo"] != "Invité"){
         Delete();
-        unset($_SESSION["username"]);
+        unset($_SESSION["pseudo"]);
         setcookie("token", "", time() - 3600);
         unset($_COOKIE["token"]);
         header("Location: /login");
@@ -159,7 +159,7 @@ function CheckChangePwd()
     exit();
 }
 
-function CheckAnswer($theme, $question)
+function CheckAnswer(string $theme, string $question)
 {
     require_once "models/model.php";
     $result = CheckAnswerDB($theme, $question);
