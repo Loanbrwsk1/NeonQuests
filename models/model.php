@@ -15,11 +15,7 @@ function GetIdUser()
 }
 
 function GetDisabledButton()
-{
-    // if($_SESSION["pseudo"] == "Invité"){
-    //     return;
-    // }
-    
+{    
     global $DB;
 
     $id_user = GetIdUser();
@@ -224,7 +220,7 @@ function CanDoQuestion(string $theme, string $question)
     }
 }
 
-function CheckAnswerDB($theme, $question)
+function CheckAnswerDB(string $theme, string $question)
 {
     global $DB;
     $answer = htmlspecialchars($_POST['answer']);
